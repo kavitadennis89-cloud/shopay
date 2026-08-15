@@ -11,92 +11,177 @@
 
 <body>
 
-    <header class="header">
+<header class="header">
+    <div class="logo">
+        Shop<span>Pay</span>
+    </div>
 
-        <div class="logo">
-            Shop<span>Pay</span>
-        </div>
-
-        <a href="index.html" class="login-btn">
-            Home
-        </a>
-
-    </header>
+    <a href="index.html" class="login-btn">
+        Home
+    </a>
+</header>
 
 
-    <main class="login-page">
+<main class="login-page">
 
-        <div class="login-box">
+    <div class="login-box">
 
-            <div class="login-icon">
-                🏪
-            </div>
+        <div class="login-icon">🏪</div>
 
-            <h1>Shopkeeper Login</h1>
+        <h1>Shopkeeper Login</h1>
 
-            <p>
-                Login to manage your shop
-            </p>
+        <p>Login to manage your shop</p>
 
+        <form id="loginForm">
 
-            <form id="loginForm">
+            <label for="email">Email Address</label>
 
-                <label for="email">
-                    Email Address
-                </label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter shopkeeper email"
+                required
+            >
 
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter shopkeeper email"
-                    required
-                >
+            <label for="password">Password</label>
 
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                required
+            >
 
-                <label for="password">
-                    Password
-                </label>
+            <button
+                type="submit"
+                class="start-btn"
+                id="loginButton"
+            >
+                Login
+            </button>
 
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter password"
-                    required
-                >
+            <p id="message"></p>
 
+        </form>
 
-                <button
-                    type="submit"
-                    class="start-btn"
-                >
-                    Login
-                </button>
+        <p class="signup-text">
+            Shopkeeper account only
+        </p>
 
-            </form>
+    </div>
 
-
-            <p class="signup-text">
-                Shopkeeper account only
-            </p>
-
-        </div>
-
-    </main>
+</main>
 
 
-    <script>
+<script type="module">
 
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", function(event) {
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-                event.preventDefault();
+    import {
+        getAuth,
+        signInWithEmailAndPassword
+    }
+        from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-                alert("Firebase login will be connected next 🔥");
 
-            });
+    // ==========================
+    // SHOPPAY FIREBASE CONFIG
+    // ==========================
 
-    </script>
+    const firebaseConfig = {
+
+        apiKey: "WEKA_API_KEY_YAKO_HAPA",
+
+        authDomain: "WEKA_AUTH_DOMAIN_YAKO_HAPA",
+
+        projectId: "WEKA_PROJECT_ID_YAKO_HAPA",
+
+        storageBucket: "WEKA_STORAGE_BUCKET_YAKO_HAPA",
+
+        messagingSenderId: "WEKA_MESSAGING_SENDER_ID_YAKO_HAPA",
+
+        appId: "WEKA_APP_ID_YAKO_HAPA"
+
+    };
+
+
+    // ==========================
+    // FIREBASE
+    // ==========================
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+
+    // ==========================
+    // LOGIN
+    // ==========================
+
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const message =
+                document.getElementById("message");
+
+            const button =
+                document.getElementById("loginButton");
+
+
+            button.disabled = true;
+            button.textContent = "Logging in...";
+
+            message.textContent = "";
+
+
+            try {
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                // Successful login
+                localStorage.setItem(
+                    "shopkeeperLoggedIn",
+                    "true"
+                );
+
+
+                window.location.href =
+                    "dashboard.html";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Invalid email or password.";
+
+                message.style.color = "red";
+
+                button.disabled = false;
+
+                button.textContent = "Login";
+
+            }
+
+        });
+
+</script>
 
 </body>
 </html>
