@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopPay - Payment Request</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .request-page {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .request-box {
+            width: 100%;
+            max-width: 430px;
+            background: #fff;
+            padding: 35px;
+            border-radius: 22px;
+            box-shadow: 0 15px 45px rgba(0,0,0,.10);
+        }
+
+        .request-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            border-radius: 50%;
+            font-size: 34px;
+        }
+
+        .request-box h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .request-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 11px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: #16a34a;
+        }
+
+        .send-btn {
+            width: 100%;
+            border: none;
+            background: #16a34a;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .send-btn:hover {
+            background: #15803d;
+        }
+
+        .send-btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        .info {
+            margin-top: 22px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+            color: #64748b;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        Shop<span>Pay</span>
+    </div>
+
+    <a href="dashboard.html" class="login-btn">
+        Dashboard
+    </a>
+
+</header>
+
+
+<main class="request-page">
+
+    <div class="request-box">
+
+        <div class="request-icon">
+            💳
+        </div>
+
+        <h1>Payment Request</h1>
+
+        <p class="request-subtitle">
+            Enter the customer's M-Pesa number and amount
+        </p>
+
+
+        <div class="field">
+
+            <label for="phone">
+                M-Pesa Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="07XXXXXXXX"
+                maxlength="12"
+                autocomplete="tel"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="amount">
+                Amount (KSh)
+            </label>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="Enter amount"
+                min="1"
+                step="1"
+            >
+
+        </div>
+
+
+        <button
+            class="send-btn"
+            id="sendButton"
+        >
+            Send Payment Prompt
+        </button>
+
+
+        <p
+            class="status"
+            id="status"
+        ></p>
+
+
+        <div class="info">
+            🔒 The customer will receive an M-Pesa payment prompt.
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    const phoneInput =
+        document.getElementById("phone");
+
+    const amountInput =
+        document.getElementById("amount");
+
+    const sendButton =
+        document.getElementById("sendButton");
+
+    const status =
+        document.getElementById("status");
+
+
+    sendButton.addEventListener("click", function() {
+
+        const phone =
+            phoneInput.value.trim();
+
+        const amount =
+            Number(amountInput.value);
+
+
+        if (!phone) {
+
+            status.textContent =
+                "Please enter the M-Pesa number.";
+
+            status.style.color = "red";
+
+            return;
+        }
+
+
+        if (phone.length < 10) {
+
+            status.textContent =
+                "Please enter a valid M-Pesa number.";
+
+            status.style.color = "red";
+
+            return;
+        }
+
+
+        if (!amount || amount <= 0) {
+
+            status.textContent =
+                "Please enter a valid amount.";
+
+            status.style.color = "red";
+
+            return;
+        }
+
+
+        sendButton.disabled = true;
+
+        sendButton.textContent =
+            "Preparing payment...";
+
+        status.textContent =
+            "Payment request is being prepared...";
+
+        status.style.color = "#d97706";
+
+
+        /*
+            REAL M-PESA STK PUSH
+            WILL BE CONNECTED THROUGH
+            A SECURE BACKEND.
+
+            DO NOT PUT DARaja CONSUMER SECRET
+            OR PASSKEY IN THIS HTML FILE.
+        */
+
+        setTimeout(function() {
+
+            sendButton.disabled = false;
+
+            sendButton.textContent =
+                "Send Payment Prompt";
+
+            status.textContent =
+                "Ready for M-Pesa integration.";
+
+            status.style.color =
+                "#16a34a";
+
+        }, 1000);
+
+    });
+
+</script>
+
+</body>
+      </html>
