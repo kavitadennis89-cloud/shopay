@@ -4,90 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ShopPay</title>
+    <title>ShopPay - Shopkeeper</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- HEADER -->
     <header class="header">
-        <div class="logo">Shop<span>Pay</span></div>
 
-        <button class="login-btn" onclick="goToLogin()">
-            Login
-        </button>
+        <div class="logo">
+            Shop<span>Pay</span>
+        </div>
+
+        <a href="login.html" class="login-btn">
+            Shopkeeper Login
+        </a>
+
     </header>
 
+
+    <!-- HERO -->
     <main class="hero">
 
         <div class="hero-content">
 
             <h1>
-                Shop Easily.<br>
-                Pay Securely.
+                Run Your Shop.<br>
+                Get Paid Easily.
             </h1>
 
             <p>
-                ShopPay makes shopping and payments
-                simple, fast and secure.
+                ShopPay helps shopkeepers manage customers,
+                orders and payments from one simple platform.
             </p>
 
-            <button class="start-btn" onclick="startShopping()">
-                Start Shopping
-            </button>
+            <a href="login.html" class="start-btn">
+                Shopkeeper Login
+            </a>
 
         </div>
 
+
+        <!-- APP CARD -->
         <div class="hero-card">
 
             <div class="payment-icon">
-                💳
+                🏪
             </div>
 
             <h2>ShopPay</h2>
 
-            <p>Simple shopping. Secure payments.</p>
+            <p>
+                Your shop. Your customers.
+                Your payments.
+            </p>
 
         </div>
 
     </main>
 
+
+    <!-- FEATURES -->
     <section class="features">
 
         <div class="feature">
-            <div>🛒</div>
-            <h3>Easy Shopping</h3>
-            <p>Find products and place your order easily.</p>
+
+            <div>🛍️</div>
+
+            <h3>
+                Manage Orders
+            </h3>
+
+            <p>
+                Record and manage customer
+                purchases easily.
+            </p>
+
         </div>
 
-        <div class="feature">
-            <div>💰</div>
-            <h3>M-Pesa Payments</h3>
-            <p>Pay quickly using M-Pesa.</p>
-        </div>
 
         <div class="feature">
-            <div>🔒</div>
-            <h3>Secure</h3>
-            <p>Your account and payment information stays protected.</p>
+
+            <div>💳</div>
+
+            <h3>
+                Easy Payments
+            </h3>
+
+            <p>
+                Make it easier for customers
+                to complete their payments.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div>📊</div>
+
+            <h3>
+                Shop Dashboard
+            </h3>
+
+            <p>
+                Track your sales, orders and
+                shop activity in one place.
+            </p>
+
         </div>
 
     </section>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 ShopPay. All rights reserved.</p>
+
+        <p>
+            © 2026 ShopPay. All rights reserved.
+        </p>
+
     </footer>
-
-    <script>
-        function goToLogin() {
-            window.location.href = "login.html";
-        }
-
-        function startShopping() {
-            window.location.href = "login.html";
-        }
-    </script>
 
 </body>
 </html>
