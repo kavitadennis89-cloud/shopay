@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopPay - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">Shop<span>Pay</span></div>
+
+        <button class="login-btn" onclick="goHome()">
+            Home
+        </button>
+    </header>
+
+    <main class="login-page">
+
+        <div class="login-box">
+
+            <div class="login-icon">🔐</div>
+
+            <h1>Welcome to ShopPay</h1>
+
+            <p>Login to continue shopping</p>
+
+            <form id="loginForm">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit" class="start-btn">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="signup-text">
+                Don't have an account?
+                <a href="#">Create Account</a>
+            </p>
+
+        </div>
+
+    </main>
+
+    <script>
+        function goHome() {
+            window.location.href = "index.html";
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            alert("Login system coming next 🔥");
+
+        });
+    </script>
+
+</body>
+                  </html>
