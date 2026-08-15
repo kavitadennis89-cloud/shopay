@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ShopPay - Login</title>
+    <title>ShopPay - Shopkeeper Login</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,70 +12,91 @@
 <body>
 
     <header class="header">
-        <div class="logo">Shop<span>Pay</span></div>
 
-        <button class="login-btn" onclick="goHome()">
+        <div class="logo">
+            Shop<span>Pay</span>
+        </div>
+
+        <a href="index.html" class="login-btn">
             Home
-        </button>
+        </a>
+
     </header>
+
 
     <main class="login-page">
 
         <div class="login-box">
 
-            <div class="login-icon">🔐</div>
+            <div class="login-icon">
+                🏪
+            </div>
 
-            <h1>Welcome to ShopPay</h1>
+            <h1>Shopkeeper Login</h1>
 
-            <p>Login to continue shopping</p>
+            <p>
+                Login to manage your shop
+            </p>
+
 
             <form id="loginForm">
 
-                <label>Email</label>
+                <label for="email">
+                    Email Address
+                </label>
 
                 <input
                     type="email"
                     id="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter shopkeeper email"
                     required
                 >
 
-                <label>Password</label>
+
+                <label for="password">
+                    Password
+                </label>
 
                 <input
                     type="password"
                     id="password"
-                    placeholder="Enter your password"
+                    placeholder="Enter password"
                     required
                 >
 
-                <button type="submit" class="start-btn">
+
+                <button
+                    type="submit"
+                    class="start-btn"
+                >
                     Login
                 </button>
 
             </form>
 
+
             <p class="signup-text">
-                Don't have an account?
-                <a href="#">Create Account</a>
+                Shopkeeper account only
             </p>
 
         </div>
 
     </main>
 
+
     <script>
-        function goHome() {
-            window.location.href = "index.html";
-        }
 
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
 
-            alert("Login system coming next 🔥");
+                event.preventDefault();
 
-        });
+                alert("Firebase login will be connected next 🔥");
+
+            });
+
     </script>
 
 </body>
-                  </html>
+</html>
