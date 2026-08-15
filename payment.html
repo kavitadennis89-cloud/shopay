@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopPay - Payment Request</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .payment-page {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .payment-box {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.10);
+        }
+
+        .payment-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            border-radius: 50%;
+            font-size: 32px;
+        }
+
+        .payment-box h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .payment-box .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .shop-name {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .amount-box {
+            background: #f0fdf4;
+            padding: 22px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .amount-label {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .amount {
+            font-size: 38px;
+            font-weight: 800;
+            color: #16a34a;
+            margin-top: 5px;
+        }
+
+        .order-box {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 14px;
+            margin-bottom: 22px;
+        }
+
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            gap: 20px;
+        }
+
+        .order-row span:first-child {
+            color: #64748b;
+        }
+
+        .order-row span:last-child {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .phone-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .phone-input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 18px;
+            outline: none;
+        }
+
+        .phone-input:focus {
+            border-color: #16a34a;
+        }
+
+        .pay-btn {
+            width: 100%;
+            border: none;
+            background: #16a34a;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pay-btn:hover {
+            background: #15803d;
+        }
+
+        .secure-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 18px;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 500px) {
+            .payment-box {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        Shop<span>Pay</span>
+    </div>
+
+</header>
+
+
+<main class="payment-page">
+
+    <div class="payment-box">
+
+        <div class="payment-logo">
+            💳
+        </div>
+
+        <h1>Payment Request</h1>
+
+        <p class="subtitle">
+            You have received a payment request
+        </p>
+
+
+        <div class="shop-name" id="shopName">
+            ShopPay Store
+        </div>
+
+
+        <div class="amount-box">
+
+            <div class="amount-label">
+                Amount to Pay
+            </div>
+
+            <div class="amount" id="amount">
+                KSh 0
+            </div>
+
+        </div>
+
+
+        <div class="order-box">
+
+            <div class="order-row">
+                <span>Customer</span>
+                <span id="customerName">Customer</span>
+            </div>
+
+            <div class="order-row">
+                <span>Order</span>
+                <span id="orderNumber">#0001</span>
+            </div>
+
+            <div class="order-row">
+                <span>Item</span>
+                <span id="itemName">Shopping Order</span>
+            </div>
+
+        </div>
+
+
+        <label class="phone-label" for="phone">
+            M-Pesa Phone Number
+        </label>
+
+        <input
+            class="phone-input"
+            type="tel"
+            id="phone"
+            placeholder="07XXXXXXXX"
+            maxlength="12"
+        >
+
+
+        <button class="pay-btn" id="payButton">
+            Pay with M-Pesa
+        </button>
+
+
+        <p class="message" id="message"></p>
+
+
+        <p class="secure-text">
+            🔒 Secure payment request powered by ShopPay
+        </p>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    const payButton =
+        document.getElementById("payButton");
+
+    const message =
+        document.getElementById("message");
+
+
+    payButton.addEventListener("click", function() {
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+
+        if (!phone) {
+
+            message.textContent =
+                "Please enter your M-Pesa phone number.";
+
+            message.style.color = "red";
+
+            return;
+        }
+
+
+        if (phone.length < 10) {
+
+            message.textContent =
+                "Please enter a valid M-Pesa number.";
+
+            message.style.color = "red";
+
+            return;
+        }
+
+
+        message.textContent =
+            "Payment request is being prepared...";
+
+        message.style.color = "#16a34a";
+
+
+        /*
+           REAL M-PESA STK PUSH
+           WILL BE CONNECTED NEXT.
+        */
+
+    });
+
+</script>
+
+</body>
+</html>
