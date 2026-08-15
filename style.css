@@ -187,3 +187,203 @@ footer {
         grid-template-columns: 1fr;
     }
   }
+/* ================================
+   SHOPPAY DASHBOARD
+================================ */
+
+.dashboard-header {
+    padding: 50px 7% 25px;
+}
+
+.dashboard-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.dashboard-grid {
+    padding: 20px 7% 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h2 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.dashboard-card p {
+    font-size: 28px;
+    font-weight: 800;
+    color: #16a34a;
+}
+
+.dashboard-actions {
+    margin: 0 7% 50px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.dashboard-actions h2 {
+    margin-bottom: 25px;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.action-grid button {
+    border: none;
+    background: #f1f5f9;
+    padding: 20px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-grid button:hover {
+    background: #dcfce7;
+}
+
+
+/* LOGIN PAGE */
+
+.login-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+.login-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dcfce7;
+    border-radius: 50%;
+    font-size: 32px;
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-box > p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.login-box label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.login-box input:focus {
+    border-color: #16a34a;
+}
+
+.login-box .start-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.signup-text {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-header {
+        padding: 35px 5% 15px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 28px;
+    }
+
+    .dashboard-grid {
+        padding: 15px 5% 30px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .dashboard-card {
+        padding: 18px;
+    }
+
+    .dashboard-actions {
+        margin: 0 5% 30px;
+        padding: 20px;
+    }
+
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .login-box {
+        padding: 30px 22px;
+    }
+}
